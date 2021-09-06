@@ -1,6 +1,10 @@
-function defaultTask(cb) {
-    // place code for your default task here
-    cb();
+const gulp = require('gulp');
+const gulpPug = require('gulp-pug');
+
+function pugToHtml() {
+    return gulp.src('source/pug/pages/*.pug')
+    .pipe(gulpPug())
+    .pipe(gulp.dest('build'));
   }
   
-  exports.default = defaultTask
+  exports.default = gulp.series(pugToHtml);
