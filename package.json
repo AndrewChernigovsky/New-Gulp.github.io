@@ -1,0 +1,23 @@
+{
+  "name": "new_gulp",
+  "version": "1.0.0",
+  "description": "project_test_gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewChernigovsky/New-Gulp.github.io.git"
+  },
+  "author": "Andrew Chernigovsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewChernigovsky/New-Gulp.github.io/issues"
+  },
+  "homepage": "https://github.com/AndrewChernigovsky/New-Gulp.github.io#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-pug": "^5.0.0"
+  }
+}
