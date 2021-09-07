@@ -18,9 +18,15 @@
   "homepage": "https://github.com/AndrewChernigovsky/New-Gulp.github.io#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-plumber": "^1.2.1",
     "gulp-pug": "^5.0.0",
     "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "^3.0.0",
     "sass": "^1.39.0"
-  }
+  },
+  "browserslist": [
+    "last 4 version"
+  ]
 }
