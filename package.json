@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AndrewChernigovsky/New-Gulp.github.io#readme",
   "devDependencies": {
+    "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.4",
     "browser-sync": "^2.27.5",
     "del": "^6.0.0",
@@ -32,6 +33,8 @@
     "sass": "^1.39.0"
   },
   "browserslist": [
-    "last 4 version"
+    "last 4 version",
+    "not dead",
+    "not ie <= 11"
   ]
 }

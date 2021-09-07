@@ -42,18 +42,16 @@ function scssToCss() {
 }
 
 function script() {
-  return gulp
-    .src("source/static/js/main.js")
+  return gulp.src("source/static/js/main.js")
     .pipe(gulpPlumber())
     .pipe(sourcemaps.init())
-    .pipe(
-      gulpBabel({
+    .pipe(gulpBabel({
         presets: ["@babel/env"],
-      })
-    )
+      }))
     .pipe(gulpUglify())
     .pipe(sourcemaps.write("maps/"))
     .pipe(gulpPlumber.stop())
+    .pipe(browserSync.stream())
     .pipe(gulp.dest("build/static/js/"));
 }
 
@@ -61,10 +59,11 @@ function server() {
   browserSync.init({
     server: {
       baseDir: "build",
-    },
+    }
   });
 
   gulp.watch("source/pug/**/*.pug", pugToHtml);
+  gulp.watch("source/static/js/**/*.js", script);
   gulp.watch("source/static/styles/**/*.scss", scssToCss);
   gulp.watch("build/*.html").on("change", browserSync.reload);
 };
