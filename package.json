@@ -26,16 +26,20 @@
     "gulp-babel": "^8.0.0",
     "gulp-cheerio": "file:../../AppData/Roaming/npm/node_modules/gulp-cheerio",
     "gulp-clean-css": "^4.3.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-plumber": "^1.2.1",
     "gulp-pug": "^5.0.0",
+    "gulp-rename": "^2.0.0",
     "gulp-replace": "file:../../AppData/Roaming/npm/node_modules/gulp-replace",
     "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-svg-sprite": "file:../../AppData/Roaming/npm/node_modules/gulp-svg-sprite",
     "gulp-svgmin": "file:../../AppData/Roaming/npm/node_modules/gulp-svgmin",
     "gulp-uglify": "^3.0.2",
-    "sass": "^1.39.0"
+    "gulp-webp": "^4.0.1",
+    "sass": "^1.39.0",
+    "svgo": "^2.5.0"
   },
   "browserslist": [
     "last 4 version",

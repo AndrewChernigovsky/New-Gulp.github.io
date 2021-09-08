@@ -1,4 +1,5 @@
 const gulp = require("gulp");
+const htmlmin = require("gulp-htmlmin");
 const gulpPug = require("gulp-pug");
 const gulpPlumber = require("gulp-plumber");
 const gulpSass = require("gulp-sass")(require("sass"));
@@ -11,24 +12,27 @@ const del = require("del");
 const browserSync = require("browser-sync").create();
 const imagemin = require("gulp-imagemin");
 const svgSprite = require('gulp-svg-sprite');
-const	svgmin = require('gulp-svgmin');
+const	svgmin= require('gulp-svgmin');
 const	cheerio = require('gulp-cheerio');
 const	replace = require('gulp-replace');
+const crtWebp = require('gulp-webp');
+const rename = require("gulp-rename");
 
 function optimizationImages(){
-  return gulp.src("source/static/images/**/*.{gif,png,jpg,svg}","!source/static/sprite/*")
+  return gulp.src("source/static/images/**/*.{gif,png,jpg}")
   .pipe(imagemin([
     imagemin.gifsicle({interlaced: true}),
     imagemin.mozjpeg({quality: 75, progressive: true}),
     imagemin.optipng({optimizationLevel: 5}),
-    imagemin.svgo({
-      plugins: [
-        {removeViewBox: true},
-        {cleanupIDs: false}
-      ]
-    })
+    imagemin.svgo()
   ]))
   .pipe(gulp.dest("build/static/images/"));
+}
+
+function createWebp() {
+  return gulp.src("source/static/images/**/*.{jpg,png}")
+    .pipe(crtWebp({quality: 75}))
+    .pipe(gulp.dest("build/static/images"))
 }
 
 function clean() {
@@ -45,6 +49,12 @@ function pugToHtml() {
       })
     )
     .pipe(gulpPlumber.stop())
+    .pipe(gulp.dest("build"));
+}
+
+function htmlminify () {
+  return gulp.src("build/*.html")
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest("build"));
 }
 
@@ -73,11 +83,12 @@ function script() {
     .pipe(sourcemaps.write("maps/"))
     .pipe(gulpPlumber.stop())
     .pipe(browserSync.stream())
+    .pipe(rename("main.min.js"))
     .pipe(gulp.dest("build/static/js/"));
 }
 
 function optimizationSvg() {
-	return gulp.src('source/static/images/sprite/*.svg')
+	return gulp.src('source/static/images/sprite/icons/*.svg')
 		.pipe(svgmin({
 			js2svg: {
 				pretty: true
@@ -95,11 +106,11 @@ function optimizationSvg() {
 		.pipe(svgSprite({
 			mode: {
 				symbol: {
-					sprite: "sprite.svg"
+					sprite: "../sprite.svg"
 				}
 			}
 		}))
-		.pipe(gulp.dest('build/static/images/sprite/'));
+		.pipe(gulp.dest('build/static/images/sprite/icons/'));
 };
 
 function server() {
@@ -115,4 +126,4 @@ function server() {
   gulp.watch("build/*.html").on("change", browserSync.reload);
 };
 
-exports.default = gulp.series(clean, pugToHtml, scssToCss, optimizationImages, optimizationSvg, script, server);
+exports.default = gulp.series(clean, pugToHtml, scssToCss, createWebp, optimizationImages, optimizationSvg, script, htmlminify, server);

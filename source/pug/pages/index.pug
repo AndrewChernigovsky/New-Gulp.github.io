@@ -1,10 +1,11 @@
-extend ../layout/main
+extends ../layout/main
 
 block variables
     - var title = "тестовый сайт, бла-бла-бла"
 
-block content 
+block content
     H1.main-header Welcome4 to my web-site
     p.main-paragraph Я рад приветствовать вас на моем сайте
         a.link-out Exit
-    p.main-paragraph Hi i m glad to see you on my web-site 
+    p.main-paragraph Hi i m glad to see you on my web-site
+    +icon("home")
