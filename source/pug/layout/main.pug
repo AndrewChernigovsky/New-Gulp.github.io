@@ -1,6 +1,7 @@
-block variables 
+include ../helpers/mixins
+block variables
 
-doctype html 
+doctype html
 html(lang="en")
     head
         meta(charset="UTF-8")
@@ -8,10 +9,10 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title #{title}
         link(rel="stylesheet", type="text/css" href="static/css/style.css")
-    body 
-        .wrapper 
+    body
+        .wrapper
             //- include ../modules/header/headers
-            .content 
-                block content 
+            .content
+                block content
             //- include ../modules/footer/footers
-            script(src="static/js/main.js")
+            script(src="static/js/main.js" type="module")

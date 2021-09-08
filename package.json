@@ -24,11 +24,16 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^8.0.0",
+    "gulp-cheerio": "file:../../AppData/Roaming/npm/node_modules/gulp-cheerio",
     "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-plumber": "^1.2.1",
     "gulp-pug": "^5.0.0",
+    "gulp-replace": "file:../../AppData/Roaming/npm/node_modules/gulp-replace",
     "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg-sprite": "file:../../AppData/Roaming/npm/node_modules/gulp-svg-sprite",
+    "gulp-svgmin": "file:../../AppData/Roaming/npm/node_modules/gulp-svgmin",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.39.0"
   },
@@ -36,5 +41,8 @@
     "last 4 version",
     "not dead",
     "not ie <= 11"
-  ]
+  ],
+  "dependencies": {
+    "gulp-cli": "^2.3.0"
+  }
 }
